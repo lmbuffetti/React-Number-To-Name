@@ -1,0 +1,29 @@
+header {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        #logo {
+            @media(max-width: 766px) {
+                width: 150px;
+            }
+        }
+        ul {
+            li {
+                list-style: none;
+                a {
+                    color: $primary;
+                    text-transform: uppercase;
+                    font-weight: 700;
+                    text-decoration: none
+                }
+            }
+        }
+    }
+}
