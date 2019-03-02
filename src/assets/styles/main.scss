@@ -15,10 +15,12 @@
 }
 
 // UTILS
-@import './utils/vars';
+@import './utils/vars',
+'./utils/iefix';
 
 // COMPONENTS
 @import './components/form_converter',
+'./components/loading',
 './components/form';
 
 // LAYOUT

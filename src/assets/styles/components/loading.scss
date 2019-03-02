@@ -1,0 +1,21 @@
+/*
+    Styles for Layout.jsx React Component
+ */
+
+.spinner-wrapper {
+  background-color: $bgWhite;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999999;
+
+  .spinner-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    animation: rotating 1s linear infinite;
+    transform: translate(-50%, -50%);
+  }
+}

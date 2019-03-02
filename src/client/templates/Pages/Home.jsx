@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
-import FormConvert from '../../components/FormConvertNumnber';
+import Loadable from 'react-loadable';
+import { Loading } from '../../components/Loading';
+
+const FormConvert = Loadable({
+    loader: () => import('../../components/FormConvertNumnber'),
+    loading: Loading,
+});
 
 class Home extends Component {
     render() {
         return (
-            <div className="bg-contact2">
-                <div className="container-contact2">
-                    <div className="wrap-contact2">
+            <div className="bg-home">
+                <div className="container-home">
+                    <div className="wrap-home">
                         <FormConvert />
                     </div>
                 </div>

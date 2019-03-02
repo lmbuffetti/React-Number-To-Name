@@ -1,11 +1,11 @@
-.bg-contact2 {
+.bg-home {
     width: 100%;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
 }
 
-.container-contact2 {
+.container-home {
     width: 100%;
     min-height: 100vh;
     display: -webkit-box;
@@ -24,7 +24,7 @@
     background: linear-gradient(45deg, rgba(213, 0, 125, 0.8), rgba(229, 57, 53, 0.8));
 }
 
-.wrap-contact2 {
+.wrap-home {
     width: 790px;
     background: #fff;
     border-radius: 10px;
@@ -36,11 +36,11 @@
 /*------------------------------------------------------------------
 */
 
-.contact2-form {
+.formConverter {
     width: 100%;
 }
 
-.contact2-form-title {
+.formConverter-title {
     display: block;
     font-family: Poppins-Bold;
     font-size: 39px;
@@ -58,14 +58,14 @@
 /*------------------------------------------------------------------
 */
 
-.wrap-input2 {
+.wrap-input {
     width: 100%;
     position: relative;
     border-bottom: 2px solid #adadad;
     margin-bottom: 37px;
 }
 
-.input2 {
+.input {
     display: block;
     width: 100%;
 
@@ -75,7 +75,7 @@
     line-height: 1.2;
 }
 
-.focus-input2 {
+.focus-input {
     position: absolute;
     display: block;
     width: 100%;
@@ -85,7 +85,7 @@
     pointer-events: none;
 }
 
-.focus-input2::before {
+.focus-input::before {
     content: "";
     display: block;
     position: absolute;
@@ -106,7 +106,7 @@
     background: linear-gradient(45deg, #d5007d, #e53935);
 }
 
-.focus-input2::after {
+.focus-input::after {
     content: attr(data-placeholder);
     display: block;
     width: 100%;
@@ -126,56 +126,50 @@
 }
 
 /*---------------------------------------------*/
-input.input2 {
+input.input {
     height: 45px;
 }
 
-input.input2+.focus-input2::after {
+input.input+.focus-input::after {
     top: 16px;
     left: 0;
 }
 
-textarea.input2 {
+textarea.input {
     min-height: 115px;
     padding-top: 13px;
     padding-bottom: 13px;
 }
 
-textarea.input2+.focus-input2::after {
+textarea.input+.focus-input::after {
     top: 16px;
     left: 0;
 }
 
-.input2:focus+.focus-input2::after {
+.input:focus+.focus-input::after {
     top: -13px;
 }
 
-.input2:focus+.focus-input2::before {
+.input:focus+.focus-input::before {
     width: 100%;
 }
 
-.has-val.input2+.focus-input2::after {
+.has-val.input+.focus-input::after {
     top: -13px;
 }
 
-.has-val.input2+.focus-input2::before {
+.has-val.input+.focus-input::before {
     width: 100%;
 }
 
 /*------------------------------------------------------------------
  Button */
-.container-contact2-form-btn {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.container-formConverter-btn {
+    text-align: center;
     padding-top: 13px;
 }
 
-.wrap-contact2-form-btn {
+.wrap-formConverter-btn {
     display: block;
     position: relative;
     z-index: 1;
@@ -187,7 +181,7 @@ textarea.input2+.focus-input2::after {
     color: #FFF;
 }
 
-.contact2-form-bgbtn {
+.formConverter-bgbtn {
     position: absolute;
     z-index: -1;
     width: 300%;
@@ -206,7 +200,7 @@ textarea.input2+.focus-input2::after {
     transition: all 0.4s;
 }
 
-.contact2-form-btn {
+.formConverter-btn {
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -228,7 +222,7 @@ textarea.input2+.focus-input2::after {
 
 }
 
-.wrap-contact2-form-btn:hover .contact2-form-bgbtn {
+.wrap-formConverter-btn:hover .formConverter-bgbtn {
     left: 0;
 }
 
@@ -236,7 +230,7 @@ textarea.input2+.focus-input2::after {
  Responsive */
 
 @media (max-width: 576px) {
-    .wrap-contact2 {
+    .wrap-home {
         padding: 72px 15px 90px 15px;
     }
 }

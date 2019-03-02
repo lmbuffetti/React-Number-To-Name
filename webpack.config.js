@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 const outputDirectory = 'dist';
 const devMode = process.env.NODE_ENV !== 'production';
 
@@ -64,7 +65,7 @@ module.exports = {
         new CleanWebpackPlugin([outputDirectory]),
         new HtmlWebpackPlugin({
             template: './public/index.html',
-            favicon: './public/favicon.ico',
+            favicon: './public/favicon.png',
         }),
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output

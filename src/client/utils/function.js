@@ -1,28 +1,31 @@
-export function convertNumber(num) {
+import {
+    NUMBERS,
+    DOZENS,
+    ERRORNUMBER,
+} from '../config/constants';
+
+export function numberToEnglish(num) {
+    if ((num.toString().split('.').length > 2 || Number.isNaN(num) || num.toString().indexOf(',') !== -1) && num) {
+        return ERRORNUMBER.invalidNumber;
+    }
     let number = parseFloat(num);
     let res = '';
     if (number > 2000000000000000) {
-        return 'NUMBER OUT OF RANGE!';
+        return ERRORNUMBER.largeNumber;
     }
     if (number < 0) {
         res = 'negative ';
         number = num * -1;
     }
-    if (Number.isNaN(number) && num) {
-        return 'INSERT A VALID NUMBER!';
-    }
 
     let decimal = 0;
 
     if (number.toString().indexOf('.') !== -1) {
-        if (number.toString().split('.').length > 2) {
-            return 'INSERT A VALID NUMBER!';
-        }
-        if (decimal > 100000) {
-            return 'NUMBER OUT OF RANGE!';
-        }
         decimal = parseInt(number.toString().split('.')[1], 10);
         number = parseInt(number.toString().split('.')[0], 10);
+        if (decimal > 100000) {
+            return ERRORNUMBER.largeDecimals;
+        }
     }
 
     const quadrillion = Math.floor(number / (10 ** 15)); /* Quadrillion */
@@ -41,40 +44,34 @@ export function convertNumber(num) {
     const one = Math.floor(numSmall % 10); /* Ones */
 
     if (quadrillion > 0) {
-        res += `${convertNumber(quadrillion)} Quadrillion`;
+        res += `${numberToEnglish(quadrillion)} Quadrillion`;
     }
     if (trillion > 0) {
-        res += `${((res === '') ? '' : ' ')} ${convertNumber(trillion)} Trillion`;
+        res += `${((res === '') ? '' : ' ')} ${numberToEnglish(trillion)} Trillion`;
     }
     if (billion > 0) {
-        res += `${((res === '') ? '' : ' ')} ${convertNumber(billion)} Billion`;
+        res += `${((res === '') ? '' : ' ')} ${numberToEnglish(billion)} Billion`;
     }
     if (milion > 0) {
-        res += `${((res === '') ? '' : ' ')} ${convertNumber(milion)} milion`;
+        res += `${((res === '') ? '' : ' ')} ${numberToEnglish(milion)} milion`;
     }
     if (thousand > 0) {
-        res += `${((res === '') ? '' : ' ')} ${convertNumber(thousand)} thousand`;
+        res += `${((res === '') ? '' : ' ')} ${numberToEnglish(thousand)} thousand`;
     }
     if (hundred) {
-        res += `${((res === '') ? '' : ' ')} ${convertNumber(hundred)} hundred`;
+        res += `${((res === '') ? '' : ' ')} ${numberToEnglish(hundred)} hundred`;
     }
 
-
-    const ones = [
-        '', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten',
-        'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen',
-    ];
-    const tens = ['', '', 'twenty', 'thirty', 'fourty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
     if ((ten > 0 || one > 0)) {
         if (!(res === '') && res !== 'negative ') {
             res += ' and ';
         }
         if (ten < 2) {
-            res += ones[ten * 10 + one];
+            res += NUMBERS[ten * 10 + one];
         } else {
-            res += tens[ten];
+            res += DOZENS[ten];
             if (one > 0) {
-                res += (`-${ones[one]}`);
+                res += (`-${NUMBERS[one]}`);
             }
         }
     }
@@ -83,12 +80,12 @@ export function convertNumber(num) {
         res = 'zero';
     }
     if (decimal > 0) {
-        return `${res} point ${convertDecimalNumber(decimal)}`;
+        return `${res} point ${numberDecimalsToEnglish(decimal)}`;
     }
     return res;
 }
 
-function convertDecimalNumber(num) {
+function numberDecimalsToEnglish(num) {
     let number = num;
     let res = '';
     const milion = Math.floor(number / 1000000); /* milion */
@@ -101,32 +98,25 @@ function convertDecimalNumber(num) {
     const one = Math.floor(numSmall % 10);
 
     if (milion > 0) {
-        res += `${convertDecimalNumber(milion)} Hundred Thousand`;
+        res += `${numberDecimalsToEnglish(milion)} milion`;
     }
     if (thousand > 0) {
-        res += `${((res === '') ? '' : ' ')} ${convertDecimalNumber(thousand)} Thousand`;
+        res += `${((res === '') ? '' : ' ')} ${numberDecimalsToEnglish(thousand)} Thousand`;
     }
     if (hundred) {
-        res += `${((res === '') ? '' : ' ')} ${convertDecimalNumber(hundred)} Hundred`;
+        res += `${((res === '') ? '' : ' ')} ${numberDecimalsToEnglish(hundred)} Hundred`;
     }
-
-
-    const ones = [
-        '', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten',
-        'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen',
-    ];
-    const tens = ['', '', 'twenty', 'thirty', 'fourty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
 
     if ((ten > 0 || one > 0)) {
         if (!(res === '')) {
             res += ' and ';
         }
         if (ten < 2) {
-            res += ones[ten * 10 + one];
+            res += NUMBERS[ten * 10 + one];
         } else {
-            res += tens[ten];
+            res += DOZENS[ten];
             if (one > 0) {
-                res += (`-${ones[one]}`);
+                res += (`-${NUMBERS[one]}`);
             }
         }
     }

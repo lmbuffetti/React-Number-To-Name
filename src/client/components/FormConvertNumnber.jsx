@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { convertNumber } from '../utils/function';
+import { numberToEnglish } from '../utils/function';
 
 class FormConvertNumnber extends Component {
     constructor(props) {
@@ -18,17 +18,17 @@ class FormConvertNumnber extends Component {
         const { value } = this.state;
         return (
             <div id="formConverterNumber">
-                <div className="contact2-form validate-form">
-                    <span className="contact2-form-title">Number to Word Converter</span>
-                    <div className="wrap-input2 validate-input">
-                        <input className={`input2 ${value ? 'has-val' : ''}`} type="text" name="value" value={value} onChange={this.handleUpdate} />
-                        <span className="focus-input2" data-placeholder="INSERT VALUE" />
+                <div className="formConverter validate-form">
+                    <span className="formConverter-title">Number to Word Converter</span>
+                    <div className="wrap-input validate-input">
+                        <input className={`input ${value ? 'has-val' : ''}`} type="text" name="value" value={value} onChange={this.handleUpdate} />
+                        <span className="focus-input" data-placeholder="INSERT VALUE" />
                     </div>
 
-                    <div className="container-contact2-form-btn">
-                        <div className="wrap-contact2-form-btn">
-                            <div className="contact2-form-bgbtn" />
-                            {convertNumber(value)}
+                    <div className="container-formConverter-btn">
+                        <div className="wrap-formConverter-btn">
+                            <div className="formConverter-bgbtn" />
+                            {numberToEnglish(value)}
                         </div>
                     </div>
                 </div>
