@@ -1,4 +1,4 @@
-# REACT FUNCTION TO CONVERT NUMBER TO ENGLISH NAME
+# React: Function to convert number to English name
 
 ### [Demo](https://www.mattiabuffetti.org/tests/JobToMe/esempio_1/)
 
