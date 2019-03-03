@@ -8,23 +8,23 @@ import {
 export function numberToEnglish(num) {
     let res = '';
     let number = parseFloat(num);
-    if (number < 0) {
+    if (number < 0) { // Check if number is negative
         res = `${ERRORNUMBER.nagetive} `;
         number = num * -1;
     }
-    if ((num.toString().split('.').length > 2 || Number.isNaN(num) || num.toString().indexOf(',') !== -1) && num) {
+    if ((num.toString().split('.').length > 2 || Number.isNaN(num) || num.toString().indexOf(',') !== -1) && num) { // Check if number is valid
         return ERRORNUMBER.invalidNumber;
     }
-    if (!Number.isFinite(number)) {
+    if (!Number.isFinite(number)) { // Check if number is infinite
         return `${res} ${ERRORNUMBER.infinity}`;
     }
-    if (number > 2000000000000000) {
+    if (number > 2000000000000000) { // Check if number is larger than 2,000,000,000,000,000
         return ERRORNUMBER.largeNumber;
     }
 
     let decimal = 0;
 
-    if (number.toString().indexOf('.') !== -1) {
+    if (number.toString().indexOf('.') !== -1) { // check if number has decimals
         decimal = parseInt(number.toString().split('.')[1], 10);
         number = parseInt(number.toString().split('.')[0], 10);
     }
@@ -80,7 +80,7 @@ export function numberToEnglish(num) {
     if (res === '' && num) {
         res = 'zero';
     }
-    if (decimal > 0) {
+    if (decimal > 0) { // If number has decimals I import a function to change them to name
         return `${res} point ${numberDecimalsToEnglish(decimal)}`;
     }
     return res;
@@ -89,6 +89,7 @@ export function numberToEnglish(num) {
 function numberDecimalsToEnglish(num) {
     console.log(num);
     let res = '';
+    // I split the number and then I convert each single number to name
     const number = num.toString().split('');
     number.map((item) => {
         res += `${NUMBERS[+item]} `;
