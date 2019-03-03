@@ -22,7 +22,7 @@ I create an external function (`/src/client/utils/function.js`) to get the input
 
 ## Project files list
 
-###ASSETS FOLDER (`/src/assets`)
+> ASSETS FOLDER (`/src/assets`)
 
 - fonts: fonts use on application, the definitve versione will build on `/dist` folder by Webapack
 - images: images use on application, the definitve versione will build on `/dist` folder by Webapack
