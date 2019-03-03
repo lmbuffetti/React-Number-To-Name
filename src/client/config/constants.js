@@ -6,6 +6,16 @@ export const DOZENS = ['', '', 'twenty', 'thirty', 'fourty', 'fifty', 'sixty', '
 
 export const ERRORNUMBER = {
     largeNumber: 'Please insert a number less than 2,000,000,000,000,000',
+    infinity: 'infinty',
     invalidNumber: 'Please insert a valid number',
     largeDecimals: 'Please insert a number with less than 100000 decimals',
+    nagetive: 'negative',
+};
+
+export const LARGENUMBERNAME = {
+    quadrillion: 'quadrillion',
+    billion: 'billion',
+    milion: 'milion',
+    thousand: 'thousand',
+    hudrend: 'hundred',
 };

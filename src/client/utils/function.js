@@ -2,20 +2,24 @@ import {
     NUMBERS,
     DOZENS,
     ERRORNUMBER,
+    LARGENUMBERNAME,
 } from '../config/constants';
 
 export function numberToEnglish(num) {
+    let res = '';
+    let number = parseFloat(num);
+    if (number < 0) {
+        res = `${ERRORNUMBER.nagetive} `;
+        number = num * -1;
+    }
     if ((num.toString().split('.').length > 2 || Number.isNaN(num) || num.toString().indexOf(',') !== -1) && num) {
         return ERRORNUMBER.invalidNumber;
     }
-    let number = parseFloat(num);
-    let res = '';
+    if (!Number.isFinite(number)) {
+        return `${res} ${ERRORNUMBER.infinity}`;
+    }
     if (number > 2000000000000000) {
         return ERRORNUMBER.largeNumber;
-    }
-    if (number < 0) {
-        res = 'negative ';
-        number = num * -1;
     }
 
     let decimal = 0;
@@ -23,9 +27,6 @@ export function numberToEnglish(num) {
     if (number.toString().indexOf('.') !== -1) {
         decimal = parseInt(number.toString().split('.')[1], 10);
         number = parseInt(number.toString().split('.')[0], 10);
-        if (decimal > 100000) {
-            return ERRORNUMBER.largeDecimals;
-        }
     }
 
     const quadrillion = Math.floor(number / (10 ** 15)); /* Quadrillion */
@@ -44,26 +45,26 @@ export function numberToEnglish(num) {
     const one = Math.floor(numSmall % 10); /* Ones */
 
     if (quadrillion > 0) {
-        res += `${numberToEnglish(quadrillion)} Quadrillion`;
+        res += `${numberToEnglish(quadrillion)} ${LARGENUMBERNAME.quadrillion}`;
     }
     if (trillion > 0) {
-        res += `${((res === '') ? '' : ' ')} ${numberToEnglish(trillion)} Trillion`;
+        res += `${((res === '') ? '' : ' ')} ${numberToEnglish(trillion)} ${LARGENUMBERNAME.trillion}`;
     }
     if (billion > 0) {
-        res += `${((res === '') ? '' : ' ')} ${numberToEnglish(billion)} Billion`;
+        res += `${((res === '') ? '' : ' ')} ${numberToEnglish(billion)} ${LARGENUMBERNAME.billion}`;
     }
     if (milion > 0) {
-        res += `${((res === '') ? '' : ' ')} ${numberToEnglish(milion)} milion`;
+        res += `${((res === '') ? '' : ' ')} ${numberToEnglish(milion)} ${LARGENUMBERNAME.milion}`;
     }
     if (thousand > 0) {
-        res += `${((res === '') ? '' : ' ')} ${numberToEnglish(thousand)} thousand`;
+        res += `${((res === '') ? '' : ' ')} ${numberToEnglish(thousand)} ${LARGENUMBERNAME.thousand}`;
     }
     if (hundred) {
-        res += `${((res === '') ? '' : ' ')} ${numberToEnglish(hundred)} hundred`;
+        res += `${((res === '') ? '' : ' ')} ${numberToEnglish(hundred)} ${LARGENUMBERNAME.hudrend}`;
     }
 
     if ((ten > 0 || one > 0)) {
-        if (!(res === '') && res !== 'negative ') {
+        if (!(res === '') && res !== `${ERRORNUMBER.nagetive} `) {
             res += ' and ';
         }
         if (ten < 2) {
@@ -86,43 +87,15 @@ export function numberToEnglish(num) {
 }
 
 function numberDecimalsToEnglish(num) {
-    let number = num;
+    console.log(num);
     let res = '';
-    const milion = Math.floor(number / 1000000); /* milion */
-    number -= milion * 1000000;
-    const thousand = Math.floor(number / 1000); /* thousand */
-    number -= thousand * 1000;
-    const hundred = Math.floor(number / 100); /* Tens */
-    const numSmall = number % 100; /* Ones */
-    const ten = Math.floor(numSmall / 10);
-    const one = Math.floor(numSmall % 10);
-
-    if (milion > 0) {
-        res += `${numberDecimalsToEnglish(milion)} milion`;
-    }
-    if (thousand > 0) {
-        res += `${((res === '') ? '' : ' ')} ${numberDecimalsToEnglish(thousand)} Thousand`;
-    }
-    if (hundred) {
-        res += `${((res === '') ? '' : ' ')} ${numberDecimalsToEnglish(hundred)} Hundred`;
-    }
-
-    if ((ten > 0 || one > 0)) {
-        if (!(res === '')) {
-            res += ' and ';
+    const number = num.toString().split('');
+    number.map((item) => {
+        res += `${NUMBERS[+item]} `;
+        if (+item === 0) {
+            res += 'zero ';
         }
-        if (ten < 2) {
-            res += NUMBERS[ten * 10 + one];
-        } else {
-            res += DOZENS[ten];
-            if (one > 0) {
-                res += (`-${NUMBERS[one]}`);
-            }
-        }
-    }
-
-    if (res === '' && num) {
-        res = 'zero';
-    }
+        return null;
+    });
     return res;
 }
