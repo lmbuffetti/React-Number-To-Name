@@ -28,3 +28,21 @@ I create an external function (`/src/client/utils/function.js`) to get the input
 - images: images use on application, the definitve versione will build on `/dist` folder by Webapack
 - styles: here is stored the scss files used to define the design of application
 
+> CLIENT (`/src/client`)
+
+- components
+    - FormConvertNumnber: Component to create the form of input and where it is imported the `numberToEnglish()` function
+    - Loading: compoent used on `Loadable` component. I used it to add a preload to the components and then to split the build on multi chunks
+-config
+    - constants: file to store the constants as Name or Error message
+-templates
+    - Layout
+        - Header: Component used to create the website header
+    -Pages
+        - Home: It is a default component that I import on Route files to create the homepage
+utils
+    function: contaitns the two functions `numberToEnglish()` and `numberDecimalsToEnglish()`
+    
+> SERVER ('src/server')
+
+-index: File used to create the server setting
