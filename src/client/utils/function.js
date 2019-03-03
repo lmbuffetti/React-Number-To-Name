@@ -6,6 +6,9 @@ import {
 } from '../config/constants';
 
 export function numberToEnglish(num) {
+    if (!num) {
+        return false;
+    }
     let res = '';
     let number = parseFloat(num);
     if (number < 0) { // Check if number is negative

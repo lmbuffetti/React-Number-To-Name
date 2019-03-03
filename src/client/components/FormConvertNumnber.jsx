@@ -4,7 +4,7 @@ import { numberToEnglish } from '../utils/function';
 class FormConvertNumnber extends Component {
     constructor(props) {
         super(props);
-        this.state = { value: Number.NEGATIVE_INFINITY };
+        this.state = { value: '' };
         this.handleUpdate = this.handleUpdate.bind(this);
     }
 
