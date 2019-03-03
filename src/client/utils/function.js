@@ -90,7 +90,6 @@ export function numberToEnglish(num) {
 }
 
 function numberDecimalsToEnglish(num) {
-    console.log(num);
     let res = '';
     // I split the number and then I convert each single number to name
     const number = num.toString().split('');

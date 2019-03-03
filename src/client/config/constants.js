@@ -14,6 +14,7 @@ export const ERRORNUMBER = {
 
 export const LARGENUMBERNAME = {
     quadrillion: 'quadrillion',
+    trillion: 'trillion',
     billion: 'billion',
     milion: 'milion',
     thousand: 'thousand',

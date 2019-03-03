@@ -13,7 +13,7 @@ const Header = Loadable({
     loading: Loading,
 });
 
-const isIE = /*@cc_on!@*/false || !!document.documentMode;
+const isIE = navigator.userAgent.indexOf('MSIE');
 
 class Root extends Component {
     render() {
